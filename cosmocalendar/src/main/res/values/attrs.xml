@@ -30,6 +30,7 @@
         <attr name="otherDayTextColor" format="color" />
         <attr name="dayTextColor" format="color" />
         <attr name="weekDayTitleTextColor" format="color" />
+        <attr name="disabledDayBackgroundColor" format="color" />
         <attr name="disabledDayTextColor" format="color" />
         <attr name="selectionBarMonthTextColor" format="color" />
 

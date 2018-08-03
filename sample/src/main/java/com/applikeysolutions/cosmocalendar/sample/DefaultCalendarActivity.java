@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.Toolbar;
+import android.util.ArraySet;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,7 +24,10 @@ import com.applikeysolutions.cosmocalendar.view.CalendarView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class DefaultCalendarActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
@@ -51,6 +55,24 @@ public class DefaultCalendarActivity extends AppCompatActivity implements RadioG
 
     private void initViews() {
         calendarView = (CalendarView) findViewById(R.id.calendar_view);
+
+        //disable days
+        ArrayList<Long> longs = new ArrayList<>();
+        longs.add(new Date().getTime());
+        Calendar calendar = Calendar.getInstance();
+        Date today = calendar.getTime();
+
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        Date tomorrow = calendar.getTime();
+
+        calendar.add(Calendar.DAY_OF_YEAR, 33);
+        Date tomorreow = calendar.getTime();
+
+        longs.add(tomorrow.getTime());
+        longs.add(tomorreow.getTime());
+        calendarView.setDisabledDays(longs);
+
+
         ((RadioGroup) findViewById(R.id.rg_orientation)).setOnCheckedChangeListener(this);
         ((RadioGroup) findViewById(R.id.rg_selection_type)).setOnCheckedChangeListener(this);
     }

@@ -199,6 +199,11 @@ public class CalendarDialog extends Dialog implements View.OnClickListener,
     }
 
     @Override
+    public int getDisabledDayBackgroundColor() {
+        return calendarView.getDisabledDayBackgroundColor();
+    }
+
+    @Override
     public int getDisabledDayTextColor() {
         return calendarView.getDisabledDayTextColor();
     }
@@ -311,6 +316,11 @@ public class CalendarDialog extends Dialog implements View.OnClickListener,
     @Override
     public void setConnectedDayIconPosition(int connectedDayIconPosition) {
         calendarView.setConnectedDayIconPosition(connectedDayIconPosition);
+    }
+
+    @Override
+    public void setDisabledDayBackgroundColor(int disabledDayBackgroundColor) {
+        calendarView.setDisabledDayBackgroundColor(disabledDayBackgroundColor);
     }
 
     @Override

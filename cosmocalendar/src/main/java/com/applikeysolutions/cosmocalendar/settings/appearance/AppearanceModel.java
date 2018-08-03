@@ -50,6 +50,9 @@ public class AppearanceModel implements AppearanceInterface {
     //Position of connected day icon (TOP/BOTTOM)
     private int connectedDayIconPosition;
 
+    //Background color of disabled days
+    private int disabledDayBackgroundColor;
+
     //Text color of disabled day
     private int disabledDayTextColor;
 
@@ -160,6 +163,10 @@ public class AppearanceModel implements AppearanceInterface {
     @Override
     public int getConnectedDayIconPosition() {
         return connectedDayIconPosition;
+    }
+
+    public int getDisabledDayBackgroundColor() {
+        return disabledDayBackgroundColor;
     }
 
     @Override
@@ -275,6 +282,11 @@ public class AppearanceModel implements AppearanceInterface {
     @Override
     public void setConnectedDayIconPosition(int connectedDayIconPosition) {
         this.connectedDayIconPosition = connectedDayIconPosition;
+    }
+
+    @Override
+    public void setDisabledDayBackgroundColor(int disabledDayBackgroundColor) {
+        this.disabledDayBackgroundColor = disabledDayBackgroundColor;
     }
 
     @Override

@@ -138,6 +138,11 @@ public class SettingsManager implements AppearanceInterface, DateInterface, Cale
     }
 
     @Override
+    public int getDisabledDayBackgroundColor() {
+        return appearanceModel.getDisabledDayBackgroundColor();
+    }
+
+    @Override
     public int getDisabledDayTextColor() {
         return appearanceModel.getDisabledDayTextColor();
     }
@@ -250,6 +255,11 @@ public class SettingsManager implements AppearanceInterface, DateInterface, Cale
     @Override
     public void setConnectedDayIconPosition(int connectedDayIconPosition) {
         appearanceModel.setConnectedDayIconPosition(connectedDayIconPosition);
+    }
+
+    @Override
+    public void setDisabledDayBackgroundColor(int disabledDayBackgroundColor) {
+        appearanceModel.setDisabledDayBackgroundColor(disabledDayBackgroundColor);
     }
 
     @Override

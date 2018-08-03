@@ -3,6 +3,7 @@ package com.applikeysolutions.cosmocalendar.adapter.viewholder;
 import android.content.res.Resources;
 import android.view.View;
 
+import com.applikeysolutions.cosmocalendar.selection.DayState;
 import com.applikeysolutions.cosmocalendar.settings.appearance.ConnectedDayIconPosition;
 import com.applikeysolutions.cosmocalendar.utils.CalendarUtils;
 import com.applikeysolutions.customizablecalendar.R;
@@ -40,6 +41,7 @@ public class DayHolder extends BaseDayHolder {
 
         if(day.isDisabled()){
             ctvDay.setTextColor(calendarView.getDisabledDayTextColor());
+            animateDay(SelectionState.SINGLE_DAY, DayState.IS_DISABLED,day);
         }
     }
 
@@ -104,6 +106,10 @@ public class DayHolder extends BaseDayHolder {
                         : calendarView.getConnectedDayIconRes());
                 break;
         }
+    }
+
+    private void animateDay(SelectionState state, DayState dayState,Day day){
+        ctvDay.setSelectionStateAndAnimate(state, dayState,calendarView, day);
     }
 
     private void animateDay(SelectionState state, Day day) {
