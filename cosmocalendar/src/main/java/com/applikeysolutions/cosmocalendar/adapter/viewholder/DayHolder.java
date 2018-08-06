@@ -32,27 +32,31 @@ public class DayHolder extends BaseDayHolder {
         if (isSelected && !day.isDisabled()) {
             select(day);
         } else {
-            unselect(day);
+            if (!day.isPartial())
+                unselect(day);
         }
 
         if (day.isCurrent()) {
             addCurrentDayIcon(isSelected);
         }
 
-        if(day.isDisabled()){
+        if (day.isPartial()) {
+            animateDay(SelectionState.SINGLE_DAY, DayState.PARTIAL, day);
+        }
+        if (day.isDisabled()) {
             ctvDay.setTextColor(calendarView.getDisabledDayTextColor());
-            animateDay(SelectionState.SINGLE_DAY, DayState.IS_DISABLED,day);
+            animateDay(SelectionState.SINGLE_DAY, DayState.IS_DISABLED, day);
         }
     }
 
-    private void addCurrentDayIcon(boolean isSelected){
+    private void addCurrentDayIcon(boolean isSelected) {
         ctvDay.setCompoundDrawablePadding(getPadding(getCurrentDayIconHeight(isSelected)) * -1);
         ctvDay.setCompoundDrawablesWithIntrinsicBounds(0, isSelected
                 ? calendarView.getCurrentDaySelectedIconRes()
                 : calendarView.getCurrentDayIconRes(), 0, 0);
     }
 
-    private int getCurrentDayIconHeight(boolean isSelected){
+    private int getCurrentDayIconHeight(boolean isSelected) {
         if (isSelected) {
             return CalendarUtils.getIconHeight(calendarView.getContext().getResources(), calendarView.getCurrentDaySelectedIconRes());
         } else {
@@ -60,7 +64,7 @@ public class DayHolder extends BaseDayHolder {
         }
     }
 
-    private int getConnectedDayIconHeight(boolean isSelected){
+    private int getConnectedDayIconHeight(boolean isSelected) {
         if (isSelected) {
             return CalendarUtils.getIconHeight(calendarView.getContext().getResources(), calendarView.getConnectedDaySelectedIconRes());
         } else {
@@ -70,7 +74,7 @@ public class DayHolder extends BaseDayHolder {
 
     private void select(Day day) {
         if (day.isFromConnectedCalendar()) {
-            if(day.isDisabled()){
+            if (day.isDisabled()) {
                 ctvDay.setTextColor(day.getConnectedDaysDisabledTextColor());
             } else {
                 ctvDay.setTextColor(day.getConnectedDaysSelectedTextColor());
@@ -90,10 +94,10 @@ public class DayHolder extends BaseDayHolder {
         animateDay(state, day);
     }
 
-    private void addConnectedDayIcon(boolean isSelected){
+    private void addConnectedDayIcon(boolean isSelected) {
         ctvDay.setCompoundDrawablePadding(getPadding(getConnectedDayIconHeight(isSelected)) * -1);
 
-        switch (calendarView.getConnectedDayIconPosition()){
+        switch (calendarView.getConnectedDayIconPosition()) {
             case ConnectedDayIconPosition.TOP:
                 ctvDay.setCompoundDrawablesWithIntrinsicBounds(0, isSelected
                         ? calendarView.getConnectedDaySelectedIconRes()
@@ -108,8 +112,8 @@ public class DayHolder extends BaseDayHolder {
         }
     }
 
-    private void animateDay(SelectionState state, DayState dayState,Day day){
-        ctvDay.setSelectionStateAndAnimate(state, dayState,calendarView, day);
+    private void animateDay(SelectionState state, DayState dayState, Day day) {
+        ctvDay.setSelectionStateAndAnimate(state, dayState, calendarView, day);
     }
 
     private void animateDay(SelectionState state, Day day) {
@@ -167,7 +171,7 @@ public class DayHolder extends BaseDayHolder {
     private void unselect(Day day) {
         int textColor;
         if (day.isFromConnectedCalendar()) {
-            if(day.isDisabled()){
+            if (day.isDisabled()) {
                 textColor = day.getConnectedDaysDisabledTextColor();
             } else {
                 textColor = day.getConnectedDaysTextColor();
@@ -185,7 +189,7 @@ public class DayHolder extends BaseDayHolder {
         ctvDay.clearView();
     }
 
-    private int getPadding(int iconHeight){
+    private int getPadding(int iconHeight) {
         return (int) (iconHeight * Resources.getSystem().getDisplayMetrics().density);
     }
 }

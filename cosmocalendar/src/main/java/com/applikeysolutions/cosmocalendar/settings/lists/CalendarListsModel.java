@@ -13,6 +13,8 @@ public class CalendarListsModel implements CalendarListsInterface {
     //Disabled days cannot be selected
     private Set<Long> disabledDays = new TreeSet<>();
 
+    private Set<Long> partialDays = new TreeSet<>();
+
     private DisabledDaysCriteria disabledDaysCriteria;
 
     //Custom connected days for displaying in calendar
@@ -25,6 +27,11 @@ public class CalendarListsModel implements CalendarListsInterface {
     @Override
     public Set<Long> getDisabledDays() {
         return disabledDays;
+    }
+
+    @Override
+    public Set<Long> getPartialDays() {
+        return partialDays;
     }
 
     @Override
@@ -45,6 +52,11 @@ public class CalendarListsModel implements CalendarListsInterface {
     @Override
     public void setDisabledDays(Set<Long> disabledDays) {
         this.disabledDays = disabledDays;
+    }
+
+    @Override
+    public void setPartialDays(Set<Long> partialDays) {
+        this.partialDays = partialDays;
     }
 
     @Override

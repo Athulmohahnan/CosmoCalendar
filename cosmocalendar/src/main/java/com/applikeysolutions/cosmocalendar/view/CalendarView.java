@@ -172,6 +172,7 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
         int connectedDayIconPosition = typedArray.getInteger(R.styleable.CalendarView_connectedDayIconPosition, SettingsManager.DEFAULT_CONNECTED_DAY_ICON_POSITION);
         int disabledDayBackgroundColor = typedArray.getColor(R.styleable.CalendarView_disabledDayBackgroundColor, ContextCompat.getColor(getContext(), R.color.default_disabled_day_background_color));
         int disabledDayTextColor = typedArray.getColor(R.styleable.CalendarView_disabledDayTextColor, ContextCompat.getColor(getContext(), R.color.default_disabled_day_text_color));
+        int partialDayBackgroundColor = typedArray.getColor(R.styleable.CalendarView_partialDayBackgroundColor, ContextCompat.getColor(getContext(), R.color.default_partial_day_background_color));
         int selectionBarMonthTextColor = typedArray.getColor(R.styleable.CalendarView_selectionBarMonthTextColor, ContextCompat.getColor(getContext(), R.color.default_selection_bar_month_title_text_color));
         int previousMonthIconRes = typedArray.getResourceId(R.styleable.CalendarView_previousMonthIconRes, R.drawable.ic_chevron_left_gray);
         int nextMonthIconRes = typedArray.getResourceId(R.styleable.CalendarView_nextMonthIconRes, R.drawable.ic_chevron_right_gray);
@@ -192,6 +193,7 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
         settingsManager.setConnectedDayIconPosition(connectedDayIconPosition);
         settingsManager.setDisabledDayBackgroundColor(disabledDayBackgroundColor);
         settingsManager.setDisabledDayTextColor(disabledDayTextColor);
+        settingsManager.setPartialDayBackgroundColor(partialDayBackgroundColor);
         settingsManager.setSelectionBarMonthTextColor(selectionBarMonthTextColor);
         settingsManager.setCurrentDayTextColor(currentDayTextColor);
         settingsManager.setCurrentDayIconRes(currentDayIconRes);
@@ -521,6 +523,11 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
     }
 
     @Override
+    public Set<Long> getPartialDays() {
+        return settingsManager.getPartialDays();
+    }
+
+    @Override
     public ConnectedDaysManager getConnectedDaysManager() {
         return settingsManager.getConnectedDaysManager();
     }
@@ -543,6 +550,16 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
     public void setDisabledDays(ArrayList<Long> disabledDays) {
         settingsManager.setDisabledDays(new HashSet<Long>(disabledDays));
         monthAdapter.setDisabledDays(new HashSet<Long>(disabledDays));
+    }
+
+    public void setPartialDays(Set<Long> partialDays) {
+        settingsManager.setPartialDays(partialDays);
+        monthAdapter.setPartialDays(partialDays);
+    }
+
+    public void setPartialDays(ArrayList<Long> partialDays) {
+        settingsManager.setPartialDays(new HashSet<Long>(partialDays));
+        monthAdapter.setPartialDays(new HashSet<Long>(partialDays));
     }
 
     public void setWeekendDays(Set<Long> weekendDays) {
@@ -847,6 +864,11 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
     }
 
     @Override
+    public int getPartialDayBackgroundColor() {
+        return settingsManager.getPartialDayBackgroundColor();
+    }
+
+    @Override
     public int getSelectionBarMonthTextColor() {
         return settingsManager.getSelectionBarMonthTextColor();
     }
@@ -1006,6 +1028,12 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
     @Override
     public void setDisabledDayTextColor(int disabledDayTextColor) {
         settingsManager.setDisabledDayTextColor(disabledDayTextColor);
+        update();
+    }
+
+    @Override
+    public void setPartialDayBackgroundColor(int partialDayBackgroundColor) {
+        settingsManager.setPartialDayBackgroundColor(partialDayBackgroundColor);
         update();
     }
 

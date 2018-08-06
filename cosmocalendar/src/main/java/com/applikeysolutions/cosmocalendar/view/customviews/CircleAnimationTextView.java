@@ -246,7 +246,10 @@ public class CircleAnimationTextView extends AppCompatTextView {
                     break;
 
                 case SINGLE_DAY:
-                    circleColor = calendarView.getDisabledDayBackgroundColor();
+                    if (dayState == DayState.PARTIAL)
+                        circleColor = calendarView.getPartialDayBackgroundColor();
+                    else
+                        circleColor = calendarView.getDisabledDayBackgroundColor();
                     setBackgroundColor(Color.TRANSPARENT);
                     break;
             }

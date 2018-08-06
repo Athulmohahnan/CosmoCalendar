@@ -9,6 +9,8 @@ public interface CalendarListsInterface {
 
     Set<Long> getDisabledDays();
 
+    Set<Long> getPartialDays();
+
     ConnectedDaysManager getConnectedDaysManager();
 
     Set<Long> getWeekendDays();
@@ -16,6 +18,8 @@ public interface CalendarListsInterface {
     DisabledDaysCriteria getDisabledDaysCriteria();
 
     void setDisabledDays(Set<Long> disabledDays);
+
+    void setPartialDays(Set<Long> partialDays);
 
     void setWeekendDays(Set<Long> weekendDays);
 

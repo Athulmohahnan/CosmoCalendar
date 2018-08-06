@@ -148,6 +148,11 @@ public class SettingsManager implements AppearanceInterface, DateInterface, Cale
     }
 
     @Override
+    public int getPartialDayBackgroundColor() {
+        return appearanceModel.getPartialDayBackgroundColor();
+    }
+
+    @Override
     public int getSelectionBarMonthTextColor() {
         return appearanceModel.getSelectionBarMonthTextColor();
     }
@@ -268,6 +273,11 @@ public class SettingsManager implements AppearanceInterface, DateInterface, Cale
     }
 
     @Override
+    public void setPartialDayBackgroundColor(int partialDayBackgroundColor) {
+        appearanceModel.setPartialDayBackgroundColor(partialDayBackgroundColor);
+    }
+
+    @Override
     public void setSelectionBarMonthTextColor(int selectionBarMonthTextColor) {
         appearanceModel.setSelectionBarMonthTextColor(selectionBarMonthTextColor);
     }
@@ -298,6 +308,11 @@ public class SettingsManager implements AppearanceInterface, DateInterface, Cale
     }
 
     @Override
+    public Set<Long> getPartialDays() {
+        return calendarListsModel.getPartialDays();
+    }
+
+    @Override
     public ConnectedDaysManager getConnectedDaysManager() {
         return calendarListsModel.getConnectedDaysManager();
     }
@@ -315,6 +330,11 @@ public class SettingsManager implements AppearanceInterface, DateInterface, Cale
     @Override
     public void setDisabledDays(Set<Long> disabledDays) {
         calendarListsModel.setDisabledDays(disabledDays);
+    }
+
+    @Override
+    public void setPartialDays(Set<Long> partialDays) {
+        calendarListsModel.setPartialDays(partialDays);
     }
 
     @Override

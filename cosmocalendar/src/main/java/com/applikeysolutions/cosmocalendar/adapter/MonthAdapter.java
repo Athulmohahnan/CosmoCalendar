@@ -129,6 +129,10 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthHolder> {
         setDaysAccordingToSet(disabledDays, DayFlag.DISABLED);
     }
 
+    public void setPartialDays(Set<Long> partialDays) {
+        setDaysAccordingToSet(partialDays, DayFlag.PARTIAL);
+    }
+
     public void setConnectedCalendarDays(Set<Long> connectedCalendarDays) {
         setDaysAccordingToSet(connectedCalendarDays, DayFlag.FROM_CONNECTED_CALENDAR);
     }
@@ -155,6 +159,10 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthHolder> {
 
                         case DISABLED:
                             day.setDisabled(CalendarUtils.isDayInSet(day, days));
+                            break;
+
+                        case PARTIAL:
+                            day.setPartial(CalendarUtils.isDayInSet(day,days));
                             break;
 
                         case FROM_CONNECTED_CALENDAR:

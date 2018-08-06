@@ -40,6 +40,8 @@ public interface AppearanceInterface {
 
     int getDisabledDayTextColor();
 
+    int getPartialDayBackgroundColor();
+
     int getSelectionBarMonthTextColor();
 
     int getPreviousMonthIconRes();
@@ -87,6 +89,8 @@ public interface AppearanceInterface {
     void setDisabledDayTextColor(int disabledDayTextColor);
 
     void setDisabledDayBackgroundColor(int disabledDayBackgroundColor);
+
+    void setPartialDayBackgroundColor(int partialDayBackgroundColor);
 
     void setSelectionBarMonthTextColor(int selectionBarMonthTextColor);
 

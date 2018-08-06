@@ -13,6 +13,7 @@ public class Day {
     private boolean current;
     private boolean selected;
     private boolean disabled;
+    private boolean partial;
     private boolean weekend;
 
     //Connected days
@@ -69,6 +70,14 @@ public class Day {
 
     public void setDisabled(boolean disabled) {
         this.disabled = disabled;
+    }
+
+    public boolean isPartial() {
+        return partial;
+    }
+
+    public void setPartial(boolean partial) {
+        this.partial = partial;
     }
 
     public boolean isWeekend() {

@@ -209,6 +209,11 @@ public class CalendarDialog extends Dialog implements View.OnClickListener,
     }
 
     @Override
+    public int getPartialDayBackgroundColor() {
+        return calendarView.getPartialDayBackgroundColor();
+    }
+
+    @Override
     public int getSelectionBarMonthTextColor() {
         return calendarView.getSelectionBarMonthTextColor();
     }
@@ -329,6 +334,11 @@ public class CalendarDialog extends Dialog implements View.OnClickListener,
     }
 
     @Override
+    public void setPartialDayBackgroundColor(int partialDayBackgroundColor) {
+        calendarView.setPartialDayBackgroundColor(partialDayBackgroundColor);
+    }
+
+    @Override
     public void setSelectionBarMonthTextColor(int selectionBarMonthTextColor) {
         calendarView.setSelectionBarMonthTextColor(selectionBarMonthTextColor);
     }
@@ -359,6 +369,11 @@ public class CalendarDialog extends Dialog implements View.OnClickListener,
     }
 
     @Override
+    public Set<Long> getPartialDays() {
+        return calendarView.getPartialDays();
+    }
+
+    @Override
     public ConnectedDaysManager getConnectedDaysManager() {
         return calendarView.getConnectedDaysManager();
     }
@@ -376,6 +391,11 @@ public class CalendarDialog extends Dialog implements View.OnClickListener,
     @Override
     public void setDisabledDays(Set<Long> disabledDays) {
         calendarView.setDisabledDays(disabledDays);
+    }
+
+    @Override
+    public void setPartialDays(Set<Long> partialDays) {
+        calendarView.setPartialDays(partialDays);
     }
 
     @Override

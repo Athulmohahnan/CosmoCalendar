@@ -56,6 +56,9 @@ public class AppearanceModel implements AppearanceInterface {
     //Text color of disabled day
     private int disabledDayTextColor;
 
+    //Background color of partial selection
+    private int partialDayBackgroundColor;
+
     //Text color of month titles in selection bar
     private int selectionBarMonthTextColor;
 
@@ -172,6 +175,11 @@ public class AppearanceModel implements AppearanceInterface {
     @Override
     public int getDisabledDayTextColor() {
         return disabledDayTextColor;
+    }
+
+    @Override
+    public int getPartialDayBackgroundColor() {
+        return partialDayBackgroundColor;
     }
 
     @Override
@@ -292,6 +300,11 @@ public class AppearanceModel implements AppearanceInterface {
     @Override
     public void setDisabledDayTextColor(int disabledDayTextColor) {
         this.disabledDayTextColor = disabledDayTextColor;
+    }
+
+    @Override
+    public void setPartialDayBackgroundColor(int partialDayBackgroundColor) {
+        this.partialDayBackgroundColor = partialDayBackgroundColor;
     }
 
     @Override

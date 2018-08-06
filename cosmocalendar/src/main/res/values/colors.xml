@@ -17,6 +17,7 @@
     <color name="default_connected_day_text_color">#f00</color>
     <color name="default_connected_day_selected_text_color">#f00</color>
     <color name="default_disabled_day_background_color">#f00</color>
+    <color name="default_partial_day_background_color">#ff832b</color>
     <color name="default_disabled_day_text_color">#c9cacd</color>
     <color name="default_border_color">#ececec</color>
     <color name="default_selection_bar_month_title_text_color">#c9cacd</color>
