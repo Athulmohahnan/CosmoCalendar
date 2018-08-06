@@ -68,9 +68,14 @@ public class DefaultCalendarActivity extends AppCompatActivity implements RadioG
         calendar.add(Calendar.DAY_OF_YEAR, 33);
         Date tomorreow = calendar.getTime();
 
-        longs.add(tomorrow.getTime());
         longs.add(tomorreow.getTime());
         calendarView.setDisabledDays(longs);
+
+
+        //partial
+        ArrayList<Long> partial = new ArrayList<Long>();
+        partial.add(tomorrow.getTime());
+        calendarView.setPartialDays(partial);
 
 
         ((RadioGroup) findViewById(R.id.rg_orientation)).setOnCheckedChangeListener(this);
