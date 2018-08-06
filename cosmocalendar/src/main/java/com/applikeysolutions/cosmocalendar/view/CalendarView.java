@@ -27,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.applikeysolutions.cosmocalendar.listeners.OnDaySelectListener;
 import com.applikeysolutions.cosmocalendar.selection.NoneSelectionManager;
 import com.applikeysolutions.cosmocalendar.FetchMonthsAsyncTask;
 import com.applikeysolutions.cosmocalendar.adapter.MonthAdapter;
@@ -100,6 +101,8 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
     private int lastVisibleMonthPosition = SettingsManager.DEFAULT_MONTH_COUNT / 2;
 
     private FetchMonthsAsyncTask asyncTask;
+
+    private OnDaySelectListener daySelectListener;
 
     public CalendarView(Context context) {
         super(context);
@@ -658,6 +661,7 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
     public void onDaySelected() {
         selectedDays = getSelectedDays();
         displaySelectedDays();
+        daySelectListener.onDaySelect();
     }
 
     /**
@@ -1120,5 +1124,9 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
                 onMonthChangeListener.onMonthChanged(month);
             previousSelectedMonth = month;
         }
+    }
+
+    public void setOnDaySelectedListener(OnDaySelectListener onDaySelectListener) {
+        this.daySelectListener = onDaySelectListener;
     }
 }
