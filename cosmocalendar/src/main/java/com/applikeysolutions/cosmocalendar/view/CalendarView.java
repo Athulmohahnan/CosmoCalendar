@@ -60,6 +60,7 @@ import com.applikeysolutions.customizablecalendar.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -661,6 +662,7 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
     public void onDaySelected() {
         selectedDays = getSelectedDays();
         displaySelectedDays();
+        if (daySelectListener!=null)
         daySelectListener.onDaySelect();
     }
 
@@ -1128,5 +1130,17 @@ public class CalendarView extends RelativeLayout implements OnDaySelectedListene
 
     public void setOnDaySelectedListener(OnDaySelectListener onDaySelectListener) {
         this.daySelectListener = onDaySelectListener;
+    }
+
+    public void setSelectedDay(long time) {
+        selectionManager.toggleDay(new Day(new Date(time)));
+    }
+
+    public void setSelectedDay(Date time) {
+        selectionManager.toggleDay(new Day(time));
+    }
+
+    public void setSelectedDay(Calendar time) {
+        selectionManager.toggleDay(new Day(time));
     }
 }

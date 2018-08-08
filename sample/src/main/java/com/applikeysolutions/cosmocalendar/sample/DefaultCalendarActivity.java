@@ -68,10 +68,10 @@ public class DefaultCalendarActivity extends AppCompatActivity implements RadioG
         calendar.add(Calendar.DAY_OF_YEAR, 1);
         Date tomorrow = calendar.getTime();
 
-        calendar.add(Calendar.DAY_OF_YEAR, 33);
+        calendar.add(Calendar.DAY_OF_YEAR, 3);
         Date tomorreow = calendar.getTime();
 
-        longs.add(tomorreow.getTime());
+//        longs.add(tomorreow.getTime());
         calendarView.setDisabledDays(longs);
 
 
@@ -79,6 +79,8 @@ public class DefaultCalendarActivity extends AppCompatActivity implements RadioG
         ArrayList<Long> partial = new ArrayList<Long>();
         partial.add(tomorrow.getTime());
         calendarView.setPartialDays(partial);
+
+        calendarView.setSelectedDay(tomorreow.getTime());
 
         calendarView.setOnDaySelectedListener(new OnDaySelectListener() {
             @Override
